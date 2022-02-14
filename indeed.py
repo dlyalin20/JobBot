@@ -68,34 +68,11 @@ def config_indeed():
 
 def indeed_start():
 
-    """ sysos = platform.system()
-
-    if sysos == "Linux":
-        1
-    elif sysos == "Darwin":
-        1
-    elif sysos == "Windows":
-        from winreg import HKEY_CLASSES_ROOT, HKEY_CURRENT_USER, OpenKey, QueryValueEx
-        with OpenKey(HKEY_CURRENT_USER, r'SOFTWARE\Microsoft\Windows\Shell\Associations\UrlAssociations\http\UserChoice') as regkey:
-            # Get the user choice
-            browser_choice = QueryValueEx(regkey, 'ProgId')[0]
-
-        with OpenKey(HKEY_CLASSES_ROOT, r'{}\shell\open\command'.format(browser_choice)) as regkey:
-            # Get the application the user's choice refers to in the application registrations
-            browser_path_tuple = QueryValueEx(regkey, None)
-
-            # This is a bit sketchy and assumes that the path will always be in double quotes
-            browser_path = browser_path_tuple[0].split('"')[1]
-
-    else:
-        print("Error determing operating system; can't load in webdriver")
-        exit() """
-
     options = Options()
     options.add_argument("--disable-notifications")
-    driver = webdriver.Chrome(executable_path="../../../Downloads/chromedriver", options=options)
+    driver = webdriver.Chrome(executable_path="./chromedriver", options=options)
     driver.get("http://www.indeed.com")
-    assert "Indeed" in driver.title
+    #assert "Indeed" in driver.title
     return driver
 
 def save_indeed_jobs(driver):
@@ -229,3 +206,5 @@ def main():
 if __name__ == "__main__":
     main()
     
+
+
